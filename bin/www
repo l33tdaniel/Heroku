@@ -8,6 +8,15 @@ var app = require('../app');
 var debug = require('debug')('generators:server');
 var http = require('http');
 
+var db = require('./db');
+
+db.connectToServer(function (err) {
+  if (err) {
+    console.error(err);
+    process.exit();
+  }
+});
+
 /**
  * Get port from environment and store in Express.
  */
