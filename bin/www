@@ -22,7 +22,6 @@ db.connectToServer(function (err) {
  */
 
 var port = normalizePort(process.env.PORT || '3001');
-
 app.set('port', port);
 
 /**
@@ -55,7 +54,6 @@ function normalizePort(val) {
     // port number
     return port;
   }
-
   return false;
 }
 
