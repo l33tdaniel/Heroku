@@ -15,11 +15,7 @@
     "google-auth-library": "^7.12.0",
     "mongodb": "^4.3.1",
     "morgan": "~1.9.1",
-<<<<<<< HEAD
-    "nodemon": "^2.0.15"
-=======
     "nodemon": "^2.0.15",
     "react-google-login": "^5.2.2"
->>>>>>> 2aa18e2ab702e7703f53ac4259610aa9d3b816d4
   }
 }
