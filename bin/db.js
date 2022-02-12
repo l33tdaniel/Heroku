@@ -21,7 +21,7 @@ module.exports = {
 
       dbConnection = db.db('sample_airbnb');
       console.log('Successfully connected to MongoDB.');
-
+      
       return callback();
     });
   },
@@ -31,3 +31,7 @@ module.exports = {
     return dbConnection;
   },
 };
+
+
+
+// I ended up adding some stuff for a react login
