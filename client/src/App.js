@@ -33,9 +33,6 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>{!data ? "Loading..." : data}</p>
-      </header>
-      <nav>
-        <div>Test</div>
         <GoogleLogin
           clientId="520195381167-pjjrr4u341kgm4emhaagv1idc72lsfur.apps.googleusercontent.com"
           buttonText="Login"
@@ -44,6 +41,10 @@ function App() {
           cookiePolicy={'single_host_origin'}
           isSignedIn={true}
         />
+      </header>
+      <nav>
+        <div>Test</div>
+
       </nav>
     </div>
   );
