@@ -2,7 +2,7 @@ import React from "react";
 import GoogleLogin from 'react-google-login';
 import logo from "./logo.svg";
 import "./App.css";
-import "./textBox.js";
+import Textbox from "./Textbox";
  
 function App() {
  
@@ -34,6 +34,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>{!data ? "Loading..." : data}</p>
+        
         <GoogleLogin
           clientId="520195381167-pjjrr4u341kgm4emhaagv1idc72lsfur.apps.googleusercontent.com"
           buttonText="Login"
@@ -42,18 +43,17 @@ function App() {
           cookiePolicy={'single_host_origin'}
           isSignedIn={true}
         />
-      <textBox/>
+        <Textbox/>
+      
       </header>
       <nav>
-        <div>Test</div>
 
       </nav>
     </div>
   );
 }
  
+
 export default App;
-
-
 
 //520195381167-pjjrr4u341kgm4emhaagv1idc72lsfur.apps.googleusercontent.com
