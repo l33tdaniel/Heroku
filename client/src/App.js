@@ -2,6 +2,7 @@ import React from "react";
 import GoogleLogin from 'react-google-login';
 import logo from "./logo.svg";
 import "./App.css";
+import "./textBox.js";
  
 function App() {
  
@@ -41,6 +42,7 @@ function App() {
           cookiePolicy={'single_host_origin'}
           isSignedIn={true}
         />
+      <textBox/>
       </header>
       <nav>
         <div>Test</div>
