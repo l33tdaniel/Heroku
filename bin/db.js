@@ -8,6 +8,11 @@ const client = new MongoClient('mongodb+srv://cluster0.l7wvm.mongodb.net/myFirst
   sslCert: credentials
 });
 
+// going to see if I can make the db.db a variable so that we can make it vary
+let location = "sample_airbnb";
+
+
+
 let dbConnection;
 const database = client.db("sample_training");
 const collection = database.collection("companies");
@@ -22,7 +27,7 @@ module.exports = {
 
       // changing this to sample training allows clark to work..
       // dbConnection = db.db('sample_training');
-      dbConnection = db.db('sample_airbnb');
+      dbConnection = db.db(location);
       console.log('Successfully connected to MongoDB.');
       
       return callback();
