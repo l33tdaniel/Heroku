@@ -20,6 +20,7 @@ app.use(express.static(path.resolve(__dirname, 'client/build')));
  
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+// also added this in down here.
 app.use('/clark', clarkRouter);
  
 // Test api connection
@@ -33,3 +34,6 @@ app.get('*', (req, res) =>{
 });
  
 module.exports = app;
+
+// something that I've learned is that this is where we link the routes. for app.use
+// we are able to add another path for us to look for something

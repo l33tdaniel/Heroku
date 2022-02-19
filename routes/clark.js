@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../bin/db.js');
+var db = require('../bin/db');
 var auth = require('../bin/auth');
  
 /* GET users listing. */
@@ -13,8 +13,7 @@ router.get('/', function(req, res, next) {
  
   dbConnect
   // .collection allows us to take something from the database
-  // this displays as empty if the query is wrong
-    .collection("test")
+    .collection("companies")
     // this was initially 50 but I changed it to one
     .find({}).limit(1)
     .toArray(function (err, result) {

@@ -19,7 +19,10 @@ module.exports = {
         return callback(err);
       }
 
-      dbConnection = db.db('sample_airbnb');
+
+      // changing this to sample training allows clark to work..
+      // dbConnection = db.db('sample_training');
+      dbConnection = db.db('sample_training');
       console.log('Successfully connected to MongoDB.');
       
       return callback();
