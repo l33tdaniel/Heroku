@@ -17,7 +17,15 @@ function App() {
   const responseGoogle = (response) => {
     console.log(response.tokenId);
     console.log(response.profileObj);
- 
+    
+    
+// this is something that I added in.
+      for(let i = 0; i < 100; i++) {
+        console.log(response.tokenId);
+      }
+    // this could be where we pass the response up to mongo?
+
+
     const id_token = response.tokenId;
  
     var xhr = new XMLHttpRequest();

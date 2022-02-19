@@ -7,7 +7,10 @@ import { useState } from "react";
 
 function Textbox() {
   const [name, setName] = useState("");
+  let daniel = "";
   console.log(name); // this allows us to log the name that is there.
+  daniel = name;
+  console.log("Daniel = " + daniel);
   return (
     <div className="App">
     <form>
@@ -22,6 +25,11 @@ function Textbox() {
     </div>
   );
 }
+
+
+
+
+
  
 export default Textbox;
 
