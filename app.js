@@ -33,6 +33,13 @@ app.get('*', (req, res) =>{
     res.sendFile(path.resolve(__dirname, 'client/build/index.html'));
 });
  
+
+
+
+
+
+
+
 module.exports = app;
 
 // something that I've learned is that this is where we link the routes. for app.use

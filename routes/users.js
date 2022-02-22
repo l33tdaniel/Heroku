@@ -35,5 +35,10 @@ router.post('/', function(req, res, next) {
   .then(() => { res.status(200).send() })
   .catch(console.error);
 })
+
+router.post('/test', (req, res) => {
+  console.log("testing");
+  res.status(200).json({ message: "OK" })
+})
  
 module.exports = router;
