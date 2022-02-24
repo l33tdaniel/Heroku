@@ -3,7 +3,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
- 
+var fs = require('fs'); 
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // I'm adding the clark thing in
@@ -34,10 +36,10 @@ app.get('*', (req, res) =>{
 });
  
 
-
-
-
-
+fs.appendFile('goals.txt', 'Hello content!', function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
 
 
 module.exports = app;

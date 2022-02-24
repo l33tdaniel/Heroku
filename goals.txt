@@ -1,2 +1,0 @@
-can I make a way so that the input I put into the search bar queries mongo?
-yes
