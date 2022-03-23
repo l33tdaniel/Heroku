@@ -2,12 +2,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var auth = require('./bin/auth');
 var cors = require("cors");
 var fs = require('fs'); 
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/api/user');
 // I'm adding the clark thing in
 var clarkRouter = require('./routes/clark');
  
@@ -19,14 +19,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, 'client/build')));
+
+app.use('/api/*', (req, res, next) => {
+    const token = req.header('Authorization').replace('Bearer ','');
+    auth.verify(token)
+    .then(() => { 
+        console.log("Auth success: ", token);
+        next(); })
+    .catch((error) => {
+        console.log("Auth failure: ", token);
+        console.log(error);
+        res.status(403).send({'status' : JSON.stringify(error)});
+    });
+})
  
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/user', usersRouter);
 // also added this in down here.
 app.use('/clark', clarkRouter);
  
 // Test api connection
-app.get("/api", (req, res) => {
+app.get("/hello", (req, res) => {
     res.json({ message: "Hello from server!" });
 });
  
@@ -41,19 +53,9 @@ fs.appendFile('goals.txt', 'Hello content!', function (err) {
     console.log('Saved!');
   });
 
-  app.use('/api/*', (req, res, next) => {
-    const token = req.header('Authorization').replace('Bearer ','');
-    auth.verify(token)
-    .then(() => { 
-        console.log("Auth success: ", token);
-        next(); })
-    .catch(() => {
-        console.log("Auth failure: ", token);
-        res.status(403).send({'status' : '403 Forbidden'});
-    });
-})
 
-
+   
+  
 
 module.exports = app;
 

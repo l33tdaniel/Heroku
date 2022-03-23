@@ -19,9 +19,9 @@ function App() {
   const login = async (googleResponse) => {
     const idToken = googleResponse.tokenId;
     const profile = googleResponse.profileObj;
-    const nodeResponse = await postData('/api/users', idToken, profile);
+    const nodeResponse = await postData('/api/user', idToken, profile);
     
-    console.log('POST /api/users response: ');
+    console.log('POST /api/user response: ');
     console.log(nodeResponse);
 
     if(nodeResponse.status === 201) {
@@ -43,27 +43,28 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>{!data ? "Loading..." : data}</p>
+      
+        <nav>
+          <div>
+            {!idToken ? 
+              <GoogleLogin
+                clientId="520195381167-pjjrr4u341kgm4emhaagv1idc72lsfur.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={login}
+                onFailure={login}
+                cookiePolicy={'single_host_origin'}
+                isSignedIn={true}
+              />
+              :
+              <GoogleLogout
+                clientId="520195381167-pjjrr4u341kgm4emhaagv1idc72lsfur.apps.googleusercontent.com"
+                buttonText="Logout"
+                onLogoutSuccess={logout}
+              />
+            }
+          </div>
+        </nav>
       </header>
-      <nav>
-        <div>
-          {!idToken ? 
-            <GoogleLogin
-              clientId="389057556950-va9i917poaprbgitmu2i48h7tcr5pd76.apps.googleusercontent.com"
-              buttonText="Login"
-              onSuccess={login}
-              onFailure={login}
-              cookiePolicy={'single_host_origin'}
-              isSignedIn={true}
-            />
-            :
-            <GoogleLogout
-              clientId="389057556950-va9i917poaprbgitmu2i48h7tcr5pd76.apps.googleusercontent.com"
-              buttonText="Logout"
-              onLogoutSuccess={logout}
-            />
-          }
-        </div>
-      </nav>
     </div>
   );
 }
