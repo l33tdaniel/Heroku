@@ -41,6 +41,19 @@ fs.appendFile('goals.txt', 'Hello content!', function (err) {
     console.log('Saved!');
   });
 
+  app.use('/api/*', (req, res, next) => {
+    const token = req.header('Authorization').replace('Bearer ','');
+    auth.verify(token)
+    .then(() => { 
+        console.log("Auth success: ", token);
+        next(); })
+    .catch(() => {
+        console.log("Auth failure: ", token);
+        res.status(403).send({'status' : '403 Forbidden'});
+    });
+})
+
+
 
 module.exports = app;
 
